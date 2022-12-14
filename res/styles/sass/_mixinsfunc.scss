@@ -1,0 +1,26 @@
+
+@mixin container-style {
+    
+    width: 90%;
+    margin: 0 auto;
+    overflow: hidden;
+
+}
+
+@mixin img-style {
+    border-radius: 10%;
+    display: block;
+}
+
+@mixin h2-style {
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+/* media queries */
+
+@mixin media($dimension) {
+    @media (min-width: $dimension) {
+        @content;
+    }
+}

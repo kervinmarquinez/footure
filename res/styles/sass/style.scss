@@ -1,0 +1,606 @@
+@use 'variables';
+@use 'mixinsfunc';
+
+/* RESET */
+
+html {
+    scroll-behavior: smooth;
+}
+
+* { 
+    margin: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    font-family: variables.$font1;
+}
+
+img {
+    width: 100%;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar {
+    background-color: transparent;
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: variables.$color1;
+    border-radius: 10px;
+
+}
+
+/* Form message */
+
+.error__message {
+    color: red;
+    margin-top: 10px;
+}
+
+.success__message {
+    color: green;
+    margin-top: 10px;
+}
+
+/* MAIN */
+
+/* -- hero -- */
+
+.container {
+    @include mixinsfunc.container-style;
+    max-width: 1400px;
+    padding: 30px 0;
+
+}
+
+.hero {
+
+    height: 100vh;
+    position: relative;
+    margin-bottom: 30px;
+
+
+    .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &__logo {
+            color: variables.$color1;
+            text-decoration: none;
+            font-weight:700;
+            font-size: 1.2rem;
+
+            @include mixinsfunc.media(768px) {
+                font-size: 1.5rem;  
+            }
+
+
+        }
+
+        &__menu {
+            display: none;
+            position: absolute;
+            list-style: none;
+            gap: 1.8rem;
+            height: 100vh;
+            margin-left: auto;
+            flex-direction: column;
+            background-color: variables.$color1;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1;
+
+            @include mixinsfunc.media(768px) {
+                display: flex;
+                position: static;
+                background-color: transparent;
+                flex-direction: row;
+                margin-left: auto;
+                top: auto;
+                left: auto;
+                right: auto;
+                height: auto;
+                
+            }
+
+
+
+            .nav__link {
+                color: variables.$color1;
+                text-decoration: none;
+
+                @include mixinsfunc.media(768px) {
+                    font-size: 1.4rem;  
+                }
+            }
+
+            #buy-nav {
+                border: 1px solid variables.$color1;
+                padding: 10px;
+                transition: 0.3s;
+                text-transform: uppercase;
+                font-weight: 600;
+                cursor: pointer
+            }
+
+            #buy-nav:hover {
+                background-color: variables.$color1;
+                color: variables.$color2;
+                border: 1px solid variables.$color1;
+                padding: 10px;
+
+            }
+
+            .nav__link-active {
+                color: variables.$color2;
+            }
+        }
+        &__menu-active{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8rem;
+            font-size: 1.5rem;
+            z-index: 99;
+            position: fixed;
+            top: 0;
+
+        }
+
+        &__burger {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 0.5rem;
+            z-index: 99;
+
+
+            @include mixinsfunc.media(768px) {
+                display: none;
+            }
+            
+            .nav__line {
+                height: 3px;
+                width: 28px;
+                background-color: variables.$color1;;
+            }
+
+            .nav__line:last-child {
+                width: 20px;
+            }
+
+            .nav__line-active:first-child {
+                transform: rotate(45deg);
+                background-color: variables.$color2;
+            }
+
+            .nav__line-active:last-child {
+                background-color: variables.$color2;
+                transform: rotate(-45deg) translateY(-2px) translateX(2px);
+                width: 28px;
+            }
+        }
+        &__burger-active {
+            gap: 0rem;
+            align-items: center;
+            position: fixed;
+            left: 90%;
+
+
+
+        }
+
+    }
+
+    &__main {
+        padding-top: 10px !important;
+        // display: flex;
+        // flex-direction: column;
+
+
+        @include mixinsfunc.media(1200px) {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 1.3rem;
+
+            height: auto;
+
+        }
+    }
+
+    &__text {
+        text-align: center;
+        @include mixinsfunc.media(1200px) {
+            text-align: start; 
+            flex: 0 0 42%;
+        }
+    }
+
+    &__title {
+        font-size: 2rem;
+        text-transform: uppercase;
+        font-weight: 900;
+        margin-bottom: 30px;
+        @include mixinsfunc.media(1200px) {
+            font-size: 3rem;  
+        }
+    } 
+
+    &__hightlight {
+        background-image: 
+        url('../../images/6.png');
+        background-size: 110% auto;
+        background-position: center;
+        color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+
+    }
+
+    &__paragraph {
+        margin-bottom: 30px;
+        line-height: 1.5rem;
+        @include mixinsfunc.media(1200px) {
+            font-size: 1.1rem;  
+        }
+    }
+
+    &__button {
+        text-decoration: none;
+        color: variables.$color1;
+        border: 1px solid variables.$color1;
+        padding: 10px;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 30px;
+        max-width: 500px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+        @include mixinsfunc.media(1200px) {
+            width: 300px;
+            text-align: center; 
+        }
+
+    }
+
+    &__button:hover {
+            background-color: variables.$color1;
+            color: variables.$color2;
+            border: 1px solid variables.$color1;
+    }
+
+    &__figure {
+
+        @include mixinsfunc.media(1200px) {
+            flex: 0 0 56%;
+            max-width: 100%;
+            
+        }
+    }
+
+    &__img {
+
+        max-width: 500px;
+        margin: 0 auto;
+
+        @include mixinsfunc.img-style;
+        @include mixinsfunc.media(1200px) {
+            max-width: none;
+
+        }
+    }
+}
+
+/* -- collection -- */
+
+.collection { 
+
+    @include mixinsfunc.media(1200px) {
+        height: 100vh;
+    }
+
+    &__title {
+        @include mixinsfunc.h2-style;
+        margin-bottom: 30px;
+        text-align: center;
+        @include mixinsfunc.media(1200px) {
+            font-size: 2rem;  
+        }
+    }
+
+    &__container {
+        display: grid;
+        gap: 1.5rem;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr);
+        grid-template-areas: 
+        "card1"
+        "card2"
+        "card3"
+        ;
+        @include mixinsfunc.media(1200px) {
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: 1fr;
+            grid-template-areas: 
+            "card1 card2 card3" 
+        }
+    }
+
+    &__item {
+        max-width: 500px;
+        margin: 0 auto;
+        margin-bottom: 50px;
+        grid-area: card1;
+        @include mixinsfunc.media(1200px) {
+            grid-area: card1;
+        }
+    }
+
+    &__item:nth-child(2){
+        grid-area: card2;
+        @include mixinsfunc.media(1200px) {
+            grid-area: card2;
+        }
+    }
+
+    &__item:last-child{
+        grid-area: card3;
+        @include mixinsfunc.media(1200px) {
+            grid-area: card3;
+        }
+    }
+
+    &__img {
+        @include mixinsfunc.img-style;
+        margin-bottom: 20px;
+    }
+
+    &__product {
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        @include mixinsfunc.media(1200px) {
+            font-size: 1.3rem;  
+        }
+    }
+
+}
+
+/* -- about -- */
+
+.about {
+
+    background-color: black;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+
+    color: white;
+    @include mixinsfunc.media(1200px) {
+        flex-direction: row;
+        justify-content: space-between;
+        max-width: none;
+        margin: 0;
+        height: 50vh;
+
+    }
+
+
+    &__container {
+        padding: 40px;
+        align-self: center;
+        @include mixinsfunc.media(1200px) {
+             flex: 0 0 50%;
+             
+
+        }
+    }
+
+    &__title {
+        @include mixinsfunc.h2-style;
+        text-align: center;
+        margin-bottom: 30px;
+        @include mixinsfunc.media(1200px) {
+            font-size: 2rem;  
+        }
+    }
+
+    &__paragraph{ 
+        line-height: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    &__figure {
+        background-image: url('../../images/8.png');
+        background-repeat:no-repeat;
+        background-position: bottom;
+
+
+        @include mixinsfunc.media(1200px) {
+            flex: 0 0 50%;
+
+       }
+    }
+
+    &__img {
+        display: block;
+
+    }
+
+}
+
+/* -- contact -- */
+
+.contact {
+
+    max-width: 1200px;
+    @include mixinsfunc.media(1200px) {
+        margin-top: 5rem;
+        margin-bottom: 5rem;
+    }
+
+    &__text {
+
+        margin-bottom: 30px;
+    }
+
+    &__title {
+        @include mixinsfunc.h2-style;
+        margin-bottom: 30px;
+        text-align: center;
+        @include mixinsfunc.media(1200px) {
+            font-size: 2rem;  
+        }
+    }
+
+    &__paragraph{ 
+        line-height: 1.5rem;
+    }
+
+    &__form {
+        width: 90%;
+        margin:  auto;
+        display: flex;
+        flex-direction: column;
+        max-width: 500px;
+
+
+    }
+    
+    &__form input {
+        margin-bottom: 25px;
+        padding: 1em 0.5em;
+        font-family: variables.$font1;
+        border: 1px solid variables.$color1;
+    }
+
+    &__form input:focus {
+        border: 2px solid variables.$color1;
+        outline: none;
+    }
+
+    &__button {
+        cursor: pointer;
+        background-color: variables.$color2;
+        border: 1px solid variables.$color1;
+        padding: 10px;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-family: variables.$font1;
+        letter-spacing: 3px;
+        transition: 0.3s;
+    }
+
+    &__button-disabled {
+        border: 1px solid rgba(16, 16, 16, 0.3);
+    }
+
+    &__button:hover {
+        background-color: variables.$color1;
+        color: variables.$color2;
+        border: 1px solid variables.$color1;
+    }
+
+    .contact__quote {
+        font-weight: 700;
+        font-size: 1.2rem;
+        text-align: center;
+        margin-top: 2.5rem;
+    }
+}
+
+
+/* -- footer -- */
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    background-color: variables.$color1;
+    padding: 40px;
+    text-align: center;
+    gap: 4rem;
+    @include mixinsfunc.media(1200px) {
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    &__info {
+        @include mixinsfunc.media(1200px) {
+            flex: 20%;
+        }
+    }
+
+    &__logo {
+        color: variables.$color2;
+        text-decoration: none;
+        font-weight:700;
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        display: block
+    }
+
+    &__social {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    &__nav {
+        @include mixinsfunc.media(1200px) {
+            flex: 20%;
+        }
+    }
+
+    &__menu {
+        display: flex;
+        flex-direction: column;
+        padding-inline-start: 0px;
+        gap: 3rem;
+    }
+
+    &__link {
+        text-transform: uppercase;
+        text-decoration: none;
+        color: variables.$color2;
+        font-weight: 300;
+    }
+
+    &__contact {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        @include mixinsfunc.media(1200px) {
+            flex: 20%;
+        }
+    }
+    
+    &__email, &__telephone {
+        color: variables.$color2;
+        text-decoration: none;
+        font-weight: 300;
+        font-size: 0.9rem;
+    }
+
+    &__created {
+        color: rgb(61, 61, 61);
+        font-size: 0.8rem;
+        @include mixinsfunc.media(1200px) {
+            flex: 0 0 100%;
+        }
+    }
+
+
+
+}
